@@ -1,0 +1,22 @@
+# Sistemas e dependencias
+node_modules
+.DS_Store
+dist
+tmp
+*.log
+
+# Environment variables (incluído no repositório conforme solicitado)
+
+# Dados sensíveis e resultados
+assets/created_contacts.json
+assets/created_contacts-test.json
+assets/add_to_workflow_results.json
+
+# Arquivos de exportação do WhatsApp (podem conter dados sensíveis)
+assets/WA-EXTRACTOR-*.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo

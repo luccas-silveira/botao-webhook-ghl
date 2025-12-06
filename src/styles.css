@@ -1,0 +1,153 @@
+:root {
+  color-scheme: dark;
+  --bg: #2e3440;
+  --text: #e5e7eb;
+  --green-lightest: #b8e986;
+  --green-light: #8bc34a;
+  --green-mid: #6da83e;
+  --green-dark: #4a7c2f;
+  --green-darkest: #2d5016;
+  --black: #1a1a1a;
+  --gray-dark: #4a4a4a;
+  --gray: #6a6a6a;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  color: var(--text);
+}
+
+.canvas {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+button {
+  position: relative;
+  width: 340px;
+  height: 100px;
+  background: var(--green-mid);
+  border: none;
+  cursor: pointer;
+  font-family: "Press Start 2P", monospace;
+  font-size: 36px;
+  color: white;
+  text-transform: uppercase;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  transition: transform 80ms ease, filter 80ms ease;
+
+  /* Pixel art 3D usando box-shadow em camadas */
+  box-shadow:
+    /* Camada 1: Borda preta mais externa */
+    -8px 0 0 0 var(--black),
+    8px 0 0 0 var(--black),
+    0 -8px 0 0 var(--black),
+    0 8px 0 0 var(--black),
+    -8px -8px 0 0 var(--black),
+    8px -8px 0 0 var(--black),
+    -8px 8px 0 0 var(--black),
+    8px 8px 0 0 var(--black),
+
+    /* Camada 2: Cinza escuro (profundidade) */
+    -12px 4px 0 0 var(--gray-dark),
+    -8px 4px 0 0 var(--gray-dark),
+    -4px 4px 0 0 var(--gray-dark),
+    0 4px 0 0 var(--gray-dark),
+    4px 4px 0 0 var(--gray-dark),
+    8px 4px 0 0 var(--gray-dark),
+    12px 4px 0 0 var(--gray-dark),
+
+    /* Camada 3: Cinza (mais profundidade) */
+    -12px 8px 0 0 var(--gray),
+    -8px 8px 0 0 var(--gray),
+    -4px 8px 0 0 var(--gray),
+    0 8px 0 0 var(--gray),
+    4px 8px 0 0 var(--gray),
+    8px 8px 0 0 var(--gray),
+    12px 8px 0 0 var(--gray),
+
+    /* Verde claro no topo (highlight) */
+    -4px -4px 0 0 var(--green-lightest),
+    0 -4px 0 0 var(--green-lightest),
+    4px -4px 0 0 var(--green-lightest),
+
+    /* Verde escuro na base */
+    -4px 0 0 0 var(--green-dark),
+    4px 0 0 0 var(--green-dark);
+}
+
+button::before {
+  content: 'OK';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  letter-spacing: 4px;
+  text-shadow:
+    3px 3px 0 var(--green-darkest),
+    -1px -1px 0 rgba(255, 255, 255, 0.4);
+}
+
+button::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 20px;
+  right: 20px;
+  height: 16px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.15);
+}
+
+button:active {
+  transform: translateY(1px);
+  filter: brightness(0.9);
+  box-shadow:
+    -8px 0 0 0 var(--black),
+    8px 0 0 0 var(--black),
+    0 -8px 0 0 var(--black),
+    0 8px 0 0 var(--black),
+    -8px -8px 0 0 var(--black),
+    8px -8px 0 0 var(--black),
+    -8px 8px 0 0 var(--black),
+    8px 8px 0 0 var(--black),
+    -12px 2px 0 0 var(--gray-dark),
+    -8px 2px 0 0 var(--gray-dark),
+    -4px 2px 0 0 var(--gray-dark),
+    0 2px 0 0 var(--gray-dark),
+    4px 2px 0 0 var(--gray-dark),
+    8px 2px 0 0 var(--gray-dark),
+    12px 2px 0 0 var(--gray-dark);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  filter: grayscale(0.6);
+}
