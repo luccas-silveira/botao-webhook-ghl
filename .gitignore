@@ -7,9 +7,8 @@ tmp
 
 # Environment variables (incluído no repositório conforme solicitado)
 
-# Dados sensíveis e resultados
+# Dados sensíveis e resultados (created_contacts-test.json incluído no repo)
 assets/created_contacts.json
-assets/created_contacts-test.json
 assets/add_to_workflow_results.json
 
 # Arquivos de exportação do WhatsApp (podem conter dados sensíveis)
